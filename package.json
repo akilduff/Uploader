@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -w --config webpack.config.js",
-    "server:start": "nodemon ./server/index.js"
+    "server:start": "nodemon ./server/index.js",
+    "sql:start": "nodemon ./database/uploader.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "mysql": "^2.18.1",
