@@ -9,19 +9,21 @@ class UploaderApp extends React.Component {
       name: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({name: event.target.value});
   }
 
   handleSubmit(e) {
-    debugger
-    console.log('Hit Submit')
-    console.log(e.target)
-    const imageFile = document.querySelector('#file')
-    console.log(imageFile)
-    const file = imageFile.files[0];
+    const formData = new FormData
+    const fileSelector = document.querySelector('#samplefile')
+    const file = fileSelector.files[0];
     console.log(file)
     axios({
       method: 'post',
-      url: '/uploader',
+      url: '/',
       data: file,
       headers: {
         'Content-Type': file.type
@@ -39,12 +41,13 @@ class UploaderApp extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            File:
-            <input type="file" id="file" />
-          </label>
-          <input type="submit" value="Submit" />
+        <form ref='uploadForm'
+          id='uploadForm'
+          action='/'
+          method='post'
+          encType="multipart/form-data">
+        <input type="file" name="sampleFile" />
+        <input type='submit' value='Upload!' />
         </form>
       </div>
     )
