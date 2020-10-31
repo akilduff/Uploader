@@ -18,6 +18,15 @@ class UploaderApp extends React.Component {
   }
 
   handleSubmit(e) {
+    axios.post('/uploader', {
+      fileName: this.state.name,
+    })
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
     e.preventDefault();
   }
 
