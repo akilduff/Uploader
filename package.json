@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -w --config webpack.config.js"
+    "build": "webpack -w --config webpack.config.js",
+    "server:start": "modemon ./server/index.js"
   },
   "repository": {
     "type": "git",
