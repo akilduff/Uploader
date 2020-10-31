@@ -8,18 +8,21 @@ class UploaderApp extends React.Component {
     this.state = {
       name: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({name: e.target.value});
-  }
-
   handleSubmit(e) {
-    const file = e.target.files[0];
-    axios.post('/uploader', file, {
+    debugger
+    console.log('Hit Submit')
+    console.log(e.target)
+    const imageFile = document.querySelector('#file')
+    console.log(imageFile)
+    const file = imageFile.files[0];
+    console.log(file)
+    axios({
+      method: 'post',
+      url: '/uploader',
+      data: file,
       headers: {
         'Content-Type': file.type
       }
@@ -38,12 +41,8 @@ class UploaderApp extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Name:
-            <input type="text" value={this.state.name} onChange={this.handleChange}/>
-          </label>
-          <label>
             File:
-            <input type="file" value={this.state.name} onChange={this.handleChange}/>
+            <input type="file" id="file" />
           </label>
           <input type="submit" value="Submit" />
         </form>

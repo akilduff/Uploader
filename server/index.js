@@ -10,7 +10,8 @@ app.get('/', function (req, res) {
 })
 
 app.post('/uploader', function (req, res) {
-  console.log(req.file)
+  console.log('Request:', req)
+  console.log('Request.Headers:', req.headers)
   res.send('Hello World');
 })
 
