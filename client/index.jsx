@@ -18,15 +18,14 @@ class UploaderApp extends React.Component {
   }
 
   handleSubmit(e) {
-    axios({
-      method: 'post',
-      url: '/uploader',
-      data: {
-      fileName: this.state.name,
+    const file = e.target.files[0];
+    axios.post('/uploader', file, {
+      headers: {
+        'Content-Type': file.type
       }
     })
     .then((res) => {
-      console.log(res);
+      console.log(res.data);
     })
     .catch((err) => {
       console.log(err);
@@ -41,6 +40,10 @@ class UploaderApp extends React.Component {
           <label>
             Name:
             <input type="text" value={this.state.name} onChange={this.handleChange}/>
+          </label>
+          <label>
+            File:
+            <input type="file" value={this.state.name} onChange={this.handleChange}/>
           </label>
           <input type="submit" value="Submit" />
         </form>
