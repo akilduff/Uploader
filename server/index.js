@@ -14,7 +14,6 @@ app.get('/', function (req, res) {
 })
 
 app.post('/', function (req, res) {
-  console.log('SAMPLE FILE: ', req.files.sampleFile)
   var dataType = req.files.sampleFile.mimetype;
   var fileNameSpace = req.files.sampleFile.name;
   var fileName = fileNameSpace.split(' ').join('');
@@ -34,7 +33,7 @@ app.post('/', function (req, res) {
     }
   })
 
-  res.send('Hello World');
+  res.send('No Refresh. Work on getting back to main file!');
 })
 
 app.listen(port, () => {
