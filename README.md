@@ -21,9 +21,9 @@ The server is written using Express.
 The front end is written using the Three.js framework of GraphQL.
 
 ## Installation
-- Install required preset JS applications
+- Install required preset JS applications:
 `$ npm install`
-- Bundle the webpack for service to html file
+- Bundle the webpack for service to html file:
 `$ npm run build`
-- Start the local server
+- Start the local server:
 `$ npm run server:start`
