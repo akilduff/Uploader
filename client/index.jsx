@@ -18,8 +18,12 @@ class UploaderApp extends React.Component {
   }
 
   handleSubmit(e) {
-    axios.post('/uploader', {
+    axios({
+      method: 'post',
+      url: '/uploader',
+      data: {
       fileName: this.state.name,
+      }
     })
     .then((res) => {
       console.log(res);
