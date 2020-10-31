@@ -17,7 +17,6 @@ class UploaderApp extends React.Component {
   }
 
   handleSubmit(e) {
-    const formData = new FormData
     const fileSelector = document.querySelector('#samplefile')
     const file = fileSelector.files[0];
     console.log(file)
