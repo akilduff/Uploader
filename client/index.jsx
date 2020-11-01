@@ -6,50 +6,46 @@ class UploaderApp extends React.Component {
   constructor() {
     super ();
     this.state = {
-      name: ''
+      submitted: false
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({name: event.target.value});
-  }
-
-  handleSubmit(e) {
-    const fileSelector = document.querySelector('#samplefile')
-    const file = fileSelector.files[0];
-    console.log(file)
-    axios({
-      method: 'post',
-      url: '/',
-      data: file,
-      headers: {
-        'Content-Type': file.type
-      }
-    })
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    e.preventDefault();
+    console.log('Handle Change')
+    if (this.state.submitted === false) {
+      this.setState({submitted: true});
+    } else {
+      this.setState({submitted: false});
+    }
   }
 
   render() {
-    return (
-      <div>
-        <form ref='uploadForm'
-          id='uploadForm'
-          action='/'
-          method='post'
-          encType="multipart/form-data">
-        <input type="file" name="sampleFile" />
-        <input type='submit' value='Upload!' />
-        </form>
-      </div>
-    )
+    if (this.state.submitted === false) {
+      return (
+        <div>
+          <form onSubmit={this.handleChange}
+            ref='uploadForm'
+            id='uploadForm'
+            action='/'
+            method='post'
+            encType="multipart/form-data">
+          <input type="file" name="sampleFile" />
+          <input type='submit' value='Upload!' />
+          </form>
+        </div>
+      )
+    } else if (this.state.submitted === true) {
+      return (
+        <div>
+          <form onSubmit={this.handleChange}>
+            <button type="submit">
+              Upload Another
+            </button>
+          </form>
+        </div>
+      )
+    }
   }
 }
 ReactDOM.render(<UploaderApp />, document.getElementById('app'))
