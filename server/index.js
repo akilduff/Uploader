@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
   res.send('Hello World');
 })
 
-app.post('/', function (req, res) {
+app.post('/uploader', function (req, res) {
   var dataType = req.files.sampleFile.mimetype;
   var fileNameSpace = req.files.sampleFile.name;
   var fileName = fileNameSpace.split(' ').join('');
@@ -33,7 +33,8 @@ app.post('/', function (req, res) {
     }
   })
 
-  res.send('No Refresh. Work on getting back to main file!');
+  res.send();
+  res.end();
 })
 
 app.listen(port, () => {
