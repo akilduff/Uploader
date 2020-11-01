@@ -13,8 +13,8 @@ class UploaderApp extends React.Component {
     this.fileData = this.fileData.bind(this);
   }
 
-  onFileChange(event) {
-    this.setState({ selectedFile: event.target.files[0] });
+  onFileChange(e) {
+    this.setState({selectedFile: e.target.files[0]});
   };
 
   onFileUpload() {

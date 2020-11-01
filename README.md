@@ -28,4 +28,4 @@ The front end is written using the Three.js framework of GraphQL and React.
 - Start the local server:
 `$ npm run server:start`
 - Open connection to MySQL:
-`$ npm run mysql:start`
+`$ npm run sql:start`
