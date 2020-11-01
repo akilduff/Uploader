@@ -18,7 +18,7 @@ The database of Uploader uses MySQL.
 ### Server
 The server is written using Express.
 ### Front End
-The front end is written using the Three.js framework of GraphQL.
+The front end is written using the Three.js framework of GraphQL and React.
 
 ## Installation
 - Install required preset JS applications:
@@ -27,3 +27,5 @@ The front end is written using the Three.js framework of GraphQL.
 `$ npm run build`
 - Start the local server:
 `$ npm run server:start`
+- Open connection to MySQL:
+`$ npm run mysql:start`
