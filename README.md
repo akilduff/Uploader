@@ -9,7 +9,7 @@ This app is a simple SPA file uploader that provides a Three.js render across th
 ## Features
 - Full CRUD operability
 - Inputs are created with a name and are classified based on their file type
-- If the file type is not known, it will be classified as "other"
+- If the file type is not known, it will be rendered as a grey box
 - All data is persistant across the application
 
 ## Structure
