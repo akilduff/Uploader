@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import * as THREE from 'three';
+import styled from 'styled-components'
 
 class UploaderApp extends React.Component {
   constructor() {
@@ -31,7 +32,6 @@ class UploaderApp extends React.Component {
         })
       })
       .then(() => {
-        console.log(this.state.count)
         this.main()
       })
   }
