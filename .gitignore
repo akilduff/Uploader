@@ -13,11 +13,8 @@ logs
 *.log
 npm-debug.log*
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Database
+/database/archives/*
 
 # TypeScript v1 declaration files
 typings/
