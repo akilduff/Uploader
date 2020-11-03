@@ -4,6 +4,35 @@ import axios from 'axios';
 import * as THREE from 'three';
 import styled from 'styled-components'
 
+const Title = styled.div`
+  text-align: center;
+  font-size: 34px;
+  font-weight: 600;
+  padding: 1em;
+`;
+const Lede = styled.div`
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  padding: 1em;
+`;
+const FileSelector = styled.div`
+  text-align: center;
+  border: 2px solid DimGrey;
+  padding: 0.5em 0em 0.5em 0em;
+  margin: 0px 5px 0px 5px;
+`;
+const FileVisual = styled(FileSelector)`
+  padding: 0em;
+`;
+const FileDetails = styled.div`
+  margin: 5%;
+`;
+const SelectFile = styled(FileDetails)`
+  font-weight: 350;
+  text-align: center;
+`;
+
 class UploaderApp extends React.Component {
   constructor() {
     super ();
@@ -200,22 +229,21 @@ class UploaderApp extends React.Component {
   fileData() {
     if (this.state.selectedFile) {
       return (
-        <div>
-          <h2>File Details:</h2>
+        <FileDetails>
+          <h4>File Details:</h4>
           <p>File Name: {this.state.selectedFile.name}</p>
           <p>File Type: {this.state.selectedFile.type}</p>
           <p>
             Last Modified:{" "}
             {this.state.selectedFile.lastModifiedDate.toDateString()}
           </p>
-        </div>
+        </FileDetails>
       );
     } else {
       return (
-        <div>
-          <br />
-          <h4>Choose before Pressing the Upload button</h4>
-        </div>
+        <FileDetails>
+          <SelectFile>Choose a file before Pressing the Upload button</SelectFile>
+        </FileDetails>
       );
     }
   };
@@ -223,20 +251,20 @@ class UploaderApp extends React.Component {
   render() {
     return (
       <div>
-          <h1>
-            Uploader
-          </h1>
-          <h3>
-            File Upload using React with Three.js output based on file type.
-          </h3>
-          <div>
+          <Title>Uploader</Title>
+          <Lede>
+            Upload a file to see a Three.js rendered output based on file types within the MySQL database
+          </Lede>
+          <FileSelector>
               <input type="file" onChange={this.onFileChange} />
               <button onClick={this.onFileUpload}>
                 Upload!
               </button>
-          </div>
+          </FileSelector>
         {this.fileData()}
-        <canvas id="c"></canvas>
+        <FileVisual>
+          <canvas id="c"></canvas>
+        </FileVisual>
       </div>
     );
   }
