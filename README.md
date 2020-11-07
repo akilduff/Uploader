@@ -1,5 +1,5 @@
 # Uploader
-This app is a single page application file uploader that provides a Three.js render across the background of the webpage depending on the uploaded file type.
+This app is a single page application file uploader that is a data visualization tool providing a model of files found in a persistent MySQL database. Using the Three.js framework that expands upon GraphQL, a dynamic model organizes files into five categories represented by complex geometries that grow and rotate as files are uploaded and saved to the database.
 
 ## Table of Contents
 - [Features](#features)
@@ -7,9 +7,9 @@ This app is a single page application file uploader that provides a Three.js ren
 - [Installation](#installation)
 
 ## Features
-- Full CRUD operability
+- CRUD operability
 - Inputs are created with a name and are classified based on their file type
-- If the file type is not known, it will be rendered as a grey box
+- If the file type is not known, it is classified as "other."
 - All data is persistant across the application
 
 ## Structure
