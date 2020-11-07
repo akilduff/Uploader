@@ -1,5 +1,5 @@
 # Uploader
-This app is a simple SPA file uploader that provides a Three.js render across the background of the webpage depending on the uploaded file type.
+This app is a single page application file uploader that provides a Three.js render across the background of the webpage depending on the uploaded file type.
 
 ## Table of Contents
 - [Features](#features)
