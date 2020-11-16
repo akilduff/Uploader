@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleUp } from '@fortawesome/free-regular-svg-icons';
 import * as THREE from 'three';
 import styled from 'styled-components'
 
+const TitleRow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Title = styled.div`
   text-align: center;
   font-size: 34px;
@@ -196,7 +203,7 @@ class UploaderApp extends React.Component {
         var selectedColor = 0xffa500;
         var radius = count/10;
       }
-      const geometry = new THREE.ConeGeometry(radius, radius*2, radius*8);
+      const geometry = new THREE.ConeGeometry(radius, radius*2, radius*2);
       const material = new THREE.MeshPhongMaterial({color: selectedColor});  // greenish blue
       const pan = new THREE.Mesh(geometry, material);
       scene.add(pan);
@@ -251,7 +258,11 @@ class UploaderApp extends React.Component {
   render() {
     return (
       <div>
+        <TitleRow>
+          <FontAwesomeIcon icon={faArrowAltCircleUp} />
           <Title>Uploader</Title>
+          <FontAwesomeIcon icon={faArrowAltCircleUp} />
+        </TitleRow>
           <Lede>
             Upload a file to see a Three.js rendered output based on file types within the MySQL database
           </Lede>
