@@ -1,28 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleUp } from '@fortawesome/free-regular-svg-icons';
+import TitleBlock from './components/titleblock.jsx'
 import * as THREE from 'three';
 import styled from 'styled-components'
 
-const TitleRow = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Title = styled.div`
-  text-align: center;
-  font-size: 34px;
-  font-weight: 600;
-  padding: 1em;
-`;
-const Lede = styled.div`
-  text-align: center;
-  font-size: 20px;
-  font-style: italic;
-  padding: 1em;
-`;
 const FileSelector = styled.div`
   text-align: center;
   border: 2px solid DimGrey;
@@ -258,14 +240,7 @@ class UploaderApp extends React.Component {
   render() {
     return (
       <div>
-        <TitleRow>
-          <FontAwesomeIcon icon={faArrowAltCircleUp} />
-          <Title>Uploader</Title>
-          <FontAwesomeIcon icon={faArrowAltCircleUp} />
-        </TitleRow>
-          <Lede>
-            Upload a file to see a Three.js rendered output based on file types within the MySQL database
-          </Lede>
+        <TitleBlock/>
           <FileSelector>
               <input type="file" onChange={this.onFileChange} />
               <button onClick={this.onFileUpload}>
