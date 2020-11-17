@@ -46,6 +46,7 @@ class UploaderApp extends React.Component {
   }
 
   main() {
+    console.log('Main is firing')
     const canvas = document.getElementById('c');
     const renderer = new THREE.WebGLRenderer({canvas});
     const fov = 75;
@@ -172,7 +173,7 @@ class UploaderApp extends React.Component {
           <FileStats
             main={this.main}
             count={this.state.count}
-            setState={this.setState}
+            addCount={this.setState}
           />
         <FileVisual>
           <canvas id="c"></canvas>

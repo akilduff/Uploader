@@ -31,7 +31,7 @@ class FileStats extends React.Component {
 
   onFileChange(e) {
     console.log(e.target.files[0])
-    props.setState({
+    this.setState({
       selectedFile: e.target.files[0],
     });
   };
@@ -53,7 +53,7 @@ class FileStats extends React.Component {
       } else {
         currentCount.other++
       }
-      props.setState({
+      this.setState({
         count: currentCount
       })
       const formData = new FormData();

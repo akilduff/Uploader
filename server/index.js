@@ -22,7 +22,6 @@ app.get('/uploader', function (req, res) {
     if (err) {
       console.log('ERR: ', err);
     } else {
-      console.log(results)
       results.forEach(result => {
         if (result.dataType.includes('jpeg')) {
           count.jpeg++
@@ -36,7 +35,6 @@ app.get('/uploader', function (req, res) {
           count.other++
         }
       })
-      console.log(count)
       res.send(count);
     }
   })
