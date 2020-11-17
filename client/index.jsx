@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import TitleBlock from './components/titleblock.jsx'
+import TitleBlock from './components/titleblock.jsx';
+import FileStats from './components/filestats.jsx';
 import * as THREE from 'three';
 import styled from 'styled-components'
 
@@ -14,19 +15,11 @@ const FileSelector = styled.div`
 const FileVisual = styled(FileSelector)`
   padding: 0em;
 `;
-const FileDetails = styled.div`
-  margin: 5%;
-`;
-const SelectFile = styled(FileDetails)`
-  font-weight: 350;
-  text-align: center;
-`;
 
 class UploaderApp extends React.Component {
   constructor() {
     super ();
     this.state = {
-      selectedFile: null,
       count: {
         jpeg: 0,
         png: 0,
@@ -36,9 +29,7 @@ class UploaderApp extends React.Component {
       }
 
     };
-    this.onFileChange = this.onFileChange.bind(this);
-    this.onFileUpload = this.onFileUpload.bind(this);
-    this.fileData = this.fileData.bind(this);
+
     this.main = this.main.bind(this);
   }
 
@@ -53,47 +44,6 @@ class UploaderApp extends React.Component {
         this.main()
       })
   }
-
-  onFileChange(e) {
-    this.setState({
-      selectedFile: e.target.files[0],
-    });
-  };
-
-  onFileUpload() {
-    var currentCount = {};
-    for (var key in this.state.count) {
-      currentCount[key] = this.state.count[key];
-    }
-    if (this.state.selectedFile) {
-      if (this.state.selectedFile.type.includes('jpeg')) {
-        currentCount.jpeg++
-      } else if (this.state.selectedFile.type.includes('png')) {
-        currentCount.png++
-      } else if (this.state.selectedFile.type.includes('javascript')) {
-        currentCount.javascript++
-      } else if (this.state.selectedFile.type.includes('pdf')) {
-        currentCount.pdf++
-      } else {
-        currentCount.other++
-      }
-      this.setState({
-        count: currentCount
-      })
-      const formData = new FormData();
-      formData.append(
-        "sampleFile",
-        this.state.selectedFile,
-        this.state.selectedFile.name
-      );
-      axios.post("/uploader", formData)
-        .then(() => {
-          this.main()
-        })
-    } else {
-      alert('Please select a file')
-    }
-  };
 
   main() {
     const canvas = document.getElementById('c');
@@ -215,39 +165,15 @@ class UploaderApp extends React.Component {
     requestAnimationFrame(render);
   }
 
-  fileData() {
-    if (this.state.selectedFile) {
-      return (
-        <FileDetails>
-          <h4>File Details:</h4>
-          <p>File Name: {this.state.selectedFile.name}</p>
-          <p>File Type: {this.state.selectedFile.type}</p>
-          <p>
-            Last Modified:{" "}
-            {this.state.selectedFile.lastModifiedDate.toDateString()}
-          </p>
-        </FileDetails>
-      );
-    } else {
-      return (
-        <FileDetails>
-          <SelectFile>Choose a file before Pressing the Upload button</SelectFile>
-        </FileDetails>
-      );
-    }
-  };
-
   render() {
     return (
       <div>
         <TitleBlock/>
-          <FileSelector>
-              <input type="file" onChange={this.onFileChange} />
-              <button onClick={this.onFileUpload}>
-                Upload!
-              </button>
-          </FileSelector>
-        {this.fileData()}
+          <FileStats
+            main={this.main}
+            count={this.state.count}
+            setState={this.setState}
+          />
         <FileVisual>
           <canvas id="c"></canvas>
         </FileVisual>
