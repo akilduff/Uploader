@@ -30,13 +30,14 @@ class FileStats extends React.Component {
   }
 
   onFileChange(e) {
-    console.log(e.target.files[0])
+    e.preventDefault();
     this.setState({
       selectedFile: e.target.files[0],
     });
   };
 
-  onFileUpload() {
+  onFileUpload(e) {
+    e.preventDefault();
     var currentCount = {};
     for (var key in this.props.count) {
       currentCount[key] = this.props.count[key];
